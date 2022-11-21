@@ -10576,6 +10576,7 @@ GameObject:
   - component: {fileID: 1183936260}
   - component: {fileID: 1183936259}
   - component: {fileID: 1183936264}
+  - component: {fileID: 1183936265}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10608,7 +10609,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183936258}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -10731,6 +10732,19 @@ MonoBehaviour:
   isGrounded: 0
   animator: {fileID: 0}
   verticalThreshold: 0
+--- !u!114 &1183936265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183936258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca686a40e7949d4ba8871c6e93b2611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!4 &1205440953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7547411407421098027, guid: a8664c66e6fea004380b75b55b7794cc, type: 3}
@@ -10853,7 +10867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go Back to Menu
+  m_text: To End Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -67758,13 +67772,14 @@ GameObject:
   - component: {fileID: 1403943310}
   - component: {fileID: 1403943309}
   - component: {fileID: 1403943308}
+  - component: {fileID: 1403943311}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1403943307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67829,7 +67844,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1403943309}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1403943311}
+        m_TargetAssemblyTypeName: Button, Assembly-CSharp
+        m_MethodName: ToEndMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1403943309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67868,6 +67895,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403943306}
   m_CullTransparentMesh: 1
+--- !u!114 &1403943311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403943306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b25d898fffdcc4f8ae0928ed01d219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1409127743
 PrefabInstance:
   m_ObjectHideFlags: 0
