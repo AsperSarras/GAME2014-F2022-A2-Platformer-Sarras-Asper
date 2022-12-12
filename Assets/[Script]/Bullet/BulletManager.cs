@@ -27,6 +27,7 @@ public class BulletManager
     private int bulletNumber;
     private GameObject bulletPrefab;
     private Transform bulletParent;
+    GameObject bullet;
 
     private void Initialize()
     {
@@ -55,16 +56,22 @@ public class BulletManager
 
     public GameObject GetBullet(Vector2 position)
     {
-        GameObject bullet = null;
+        Debug.Log("Check1");
+        bullet = null;
+
         if (bulletPool.Count < 0)
         {
             bulletPool.Enqueue(CreateBullet());
         }
-
+        Debug.Log("Check2");
         bullet = bulletPool.Dequeue();
+        Debug.Log("Check3");
         bullet.SetActive(true);
+        Debug.Log("Check4");
         bullet.transform.position = position;
+        Debug.Log("Check5");
         bullet.GetComponent<BulletController>().Activate();
+        Debug.Log("Check6");
         return bullet;
     }
 

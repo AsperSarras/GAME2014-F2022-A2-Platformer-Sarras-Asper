@@ -25,7 +25,7 @@ public class MovingPlatformController : MonoBehaviour
     private Vector2 destinationPoint;
     private Vector2 elevatorDestination;
 
-    public GameObject destination;
+    public GameObject destination = null;
 
     public PlatformController normalPlatformController;
 
@@ -38,7 +38,11 @@ public class MovingPlatformController : MonoBehaviour
         timer = 0.0f;
         currentPoint = 0;
         startPoint = transform.position;
-        elevatorDestination = destination.transform.position;
+        if(PlatformType == EnumPlatformType.ESCALATORPLATFORM)
+        {
+            elevatorDestination = destination.transform.position;
+        }
+
 
 
         for (int i = 0; i < points.Count; i++)

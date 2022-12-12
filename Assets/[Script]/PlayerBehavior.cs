@@ -53,12 +53,13 @@ public class PlayerBehavior : MonoBehaviour
     public float shakeTimer;
     public bool isCameraShaking;
 
-    private SoundManager soundManager;
+    public SoundManager soundManager;
 
     public GameObject playerBullet;
     public Transform startingPlace;
 
     public bool lookingRight = true;
+    bool won = false;
 
 
     void Start()
@@ -68,7 +69,7 @@ public class PlayerBehavior : MonoBehaviour
         deathPlane = FindObjectOfType<DeathPlaneController>();
         soundManager = FindObjectOfType<SoundManager>();
         leftJoystick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
-
+        //leftJoystick = GameObject.Find("LeftStick").GetComponent<Joystick>();
         playerCamera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
         perlin = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         isCameraShaking = false;
@@ -124,8 +125,9 @@ public class PlayerBehavior : MonoBehaviour
     private void Move()
     {
         var x = Input.GetAxisRaw("Horizontal") + ((Application.isMobilePlatform) ? leftJoystick.Horizontal : 0.0f);
+        //var x = Input.GetAxisRaw("Horizontal") + leftJoystick.Horizontal;
 
-        if(x != 0.0f)
+        if (x != 0.0f)
         {
             Flip(x);
 
@@ -277,6 +279,7 @@ public class PlayerBehavior : MonoBehaviour
 
         if (other.gameObject.CompareTag("Goal"))
         {
+            won = true;
             soundManager.PlaySoundFX(SoundFX.STAGECLEAR, Channel.SCORE_FX);
             StartCoroutine(GameTermination());
         }
@@ -288,9 +291,14 @@ public class PlayerBehavior : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         int score = i_Score;
-        score += currentLifes * 100;
-        int secReduce = (i_Sec / 10);
-        int timeScore = 300 - (i_Min * 60) - secReduce;
+        int secReduce = 0;
+        int timeScore = 0;
+        if (won == true)
+        {
+            score += currentLifes * 100;
+            secReduce = (i_Sec / 10);
+            timeScore = 300 - (i_Min * 60) - secReduce;
+        }
         if(timeScore < 0)
         {
             timeScore = 0;
@@ -304,6 +312,8 @@ public class PlayerBehavior : MonoBehaviour
         ScoreSingleton.Instance.Sec = i_Sec;
         ScoreSingleton.Instance.Kills = i_EnemyKilled;
         ScoreSingleton.Instance.Apple = i_AppleGet;
+
+        BulletManager.Instance().DestroyPool();
 
         SceneManager.LoadScene(3);
 

@@ -65,19 +65,13 @@ public class BulletControllerPlayer : MonoBehaviour
         }
     }
 
-    //public void ResetAllPhysics()
-    //{
-    //    rigidbody2D.velocity = Vector2.zero;
-    //    rigidbody2D.angularVelocity = 0;
-    //    direction = Vector2.zero;
-    //}
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             player.i_Score += 50;
             player.i_EnemyKilled++;
+            player.soundManager.PlaySoundFX(SoundFX.ENEMIEDEATH, Channel.ENEMIES_DEATH_FX);
             Destroy(other.gameObject);
             DestroyYourself();
         }

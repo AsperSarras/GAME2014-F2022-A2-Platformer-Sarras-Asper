@@ -36,6 +36,7 @@ public class EnemyRangedAttackAction : MonoBehaviour, Action
 
     public void Execute()
     {
+        Debug.Log("Check0");
         var bullet = BulletManager.Instance().GetBullet(bulletSpawn.position);
         soundManager.PlaySoundFX(SoundFX.ENEMYATTACk, Channel.ENEMIES_FX);
     }

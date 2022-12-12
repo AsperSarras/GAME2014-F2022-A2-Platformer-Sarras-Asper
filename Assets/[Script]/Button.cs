@@ -7,6 +7,7 @@ public class Button : MonoBehaviour
 {
     public void ToMainMenu()
     {
+        BulletManager.Instance().DestroyPool();
         SceneManager.LoadScene(0);
     }
     public void ToTutorialGame()
