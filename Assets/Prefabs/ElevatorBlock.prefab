@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1199804282459078541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5663569467091504938}
+  m_Layer: 8
+  m_Name: destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5663569467091504938
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199804282459078541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5830937500846246188}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7359511475355549801
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,9 +43,11 @@ GameObject:
   - component: {fileID: 1928023906042807678}
   - component: {fileID: -2679995057479924}
   - component: {fileID: 5832741705771934203}
-  m_Layer: 0
+  - component: {fileID: -7681610572539620773}
+  - component: {fileID: -5536135277790197823}
+  m_Layer: 8
   m_Name: ElevatorBlock
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,9 +63,10 @@ Transform:
   m_LocalPosition: {x: 6.2, y: -3.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5663569467091504938}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1928023906042807678
 SpriteRenderer:
@@ -133,3 +167,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.74, y: 0.91}
   m_EdgeRadius: 0
+--- !u!114 &-7681610572539620773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359511475355549801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6386c8f561cccaa44a038b10e6a26745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOnPlatform: 0
+--- !u!114 &-5536135277790197823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359511475355549801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3d6f144ba97744c965d3a4a87a29c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Direction: 1
+  PlatformType: 2
+  horizontalDistance: 8
+  horizontalSpeed: 1
+  verticalDistance: 0
+  verticalSpeed: 1
+  customSpeedFactor: 0.002
+  points: []
+  destination: {fileID: 1199804282459078541}
+  normalPlatformController: {fileID: -7681610572539620773}

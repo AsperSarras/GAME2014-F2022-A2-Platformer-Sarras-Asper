@@ -5,32 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToMainMenu()
     {
         SceneManager.LoadScene(0);
     }
     public void ToTutorialGame()
     {
+        ScoreSingleton.Instance.ResetStats();
+        ScoreSingleton.Instance.isTutorial = true;
         SceneManager.LoadScene(1);
     }
     public void ToMainGame()
     {
+        ScoreSingleton.Instance.ResetStats();
+        ScoreSingleton.Instance.isTutorial = false;
         SceneManager.LoadScene(2);
     }
     public void ToEndMenu()
     {
         SceneManager.LoadScene(3);
     }
+    public void Replay()
+    {
+        if(ScoreSingleton.Instance.isTutorial == true)
+        {
+            ToTutorialGame();
+        }
+        else
+        {
+            ToMainGame();
+        }
+    }    
 }

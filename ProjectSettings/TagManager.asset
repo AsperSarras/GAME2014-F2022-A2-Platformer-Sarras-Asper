@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Platform
+  - Enemy
+  - Hazard
+  - Apple
+  - Bullet
+  - EnemyBullet
+  - PlayerBullet
+  - Prop
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -11,16 +20,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Props
+  - Platform
+  - Player
+  - Marker
+  - Hazard
+  - PlayerBullet
+  - EnemyBullet
+  - Enemies
+  - Confiner
   - 
   - 
   - 
@@ -41,11 +50,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Terrain
+  - name: Platform
     uniqueID: 1781078059
     locked: 0
-  - name: Hazzards
+  - name: Props
     uniqueID: 76223501
+    locked: 0
+  - name: Player_FX
+    uniqueID: 4240795853
+    locked: 0
+  - name: Bullet
+    uniqueID: 1644754879
+    locked: 0
+  - name: Player
+    uniqueID: 2086050927
+    locked: 0
+  - name: Marker
+    uniqueID: 3280110849
     locked: 0
   - name: Ui
     uniqueID: 1459001409
